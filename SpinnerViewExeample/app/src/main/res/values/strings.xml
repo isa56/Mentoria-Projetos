@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SpinnerViewExeample</string>
+
+    <string-array name="names_array">
+        <item>Rafael</item>
+        <item>Isadora</item>
+        <item>Marcos</item>
+        <item>Maria</item>
+        <item>Antônia</item>
+    </string-array>
+
+</resources>
