@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">Exemplo</string>
+    <string name="app_name">Card</string>
+    <string-array name="idades">
+        <item>Selecione sua idade</item>
+        <item>Menor que 18</item>
+        <item>Entre 18 e 20</item>
+        <item>Entre 21 e 25</item>
+        <item>Entre 26 e 30</item>
+        <item>Entre 31 e 35</item>
+        <item>Maior que 35</item>
+    </string-array>
 </resources>
