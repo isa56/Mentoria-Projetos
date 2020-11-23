@@ -46,13 +46,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String idade = (String) parent.getItemAtPosition(position);
-                if (idade != "Selecione sua idade") {
+
+                if (position == 0) {
+                    button2.setEnabled(false);
+                    button.setEnabled(false);
+                }   else {
                     Toast.makeText(MainActivity.this, "Você selecionou: " + idade, Toast.LENGTH_SHORT).show();
                     age.setText(idade);
                     button.setEnabled(true);
-                    button2.setEnabled(true);
-                }   else {
-                    age.setText("Selecione uma idade válida");
                 }
             }
 
@@ -65,8 +66,11 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                String a = spinner.getSelectedItem().toString();
+                age.setText(a);
                 name = username.getText().toString();
                 text.setText("Olá, " + name);
+                button2.setEnabled(true);
             }
         });
 
@@ -74,9 +78,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, SecondActivity.class);
-//                i.putExtra("idade", idade);
+//                if (spinner)
+                String a = spinner.getSelectedItem().toString();
+                i.putExtra("idade", a);
                 i.putExtra("usuario", name);
-
+                startActivity(i);
             }
         });
 
