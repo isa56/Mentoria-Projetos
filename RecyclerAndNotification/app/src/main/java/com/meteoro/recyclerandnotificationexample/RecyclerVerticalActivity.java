@@ -35,6 +35,9 @@ public class RecyclerVerticalActivity extends AppCompatActivity implements ItemC
     @Override
     public void onItemClick(Pessoa pessoa) {
         Toast.makeText(RecyclerVerticalActivity.this, pessoa.getName() + " " + pessoa.getLastName(), Toast.LENGTH_SHORT).show();
+        String title = pessoa.getName();
+        String content = pessoa.getLastName() + " é um sobrenome de uma familia muito importante...";
+        NotificationUtils.notificationSimple(RecyclerVerticalActivity.this, title, content);
     }
 
     private List<Pessoa> criarPessoas() {
