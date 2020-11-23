@@ -13,10 +13,10 @@ import java.util.List;
 
 public class AdapterLinear extends RecyclerView.Adapter<ItemViewHolder> {
 
-    private List<String> dataSet;
+    private List<Pessoa> dataSet;
     private ItemClickListener listener;
 
-    AdapterLinear(List<String> data, ItemClickListener dataListener) {
+    AdapterLinear(List<Pessoa> data, ItemClickListener dataListener) {
         dataSet = data;
         listener = dataListener;
     }
@@ -31,8 +31,7 @@ public class AdapterLinear extends RecyclerView.Adapter<ItemViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-        String name = dataSet.get(position);
-        holder.bind(name, listener);
+        holder.bind(dataSet.get(position), listener);
     }
 
     @Override

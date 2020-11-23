@@ -28,23 +28,24 @@ public class RecyclerVerticalActivity extends AppCompatActivity implements ItemC
         layoutManager = new LinearLayoutManager(RecyclerVerticalActivity.this, LinearLayoutManager.VERTICAL, false);
         recyclerVertical.setLayoutManager(layoutManager);
 
-        adapter = new AdapterLinear(criarNomes(), RecyclerVerticalActivity.this);
+        adapter = new AdapterLinear(criarPessoas(), RecyclerVerticalActivity.this);
         recyclerVertical.setAdapter(adapter);
     }
 
     @Override
-    public void onItemClick(String name) {
-        Toast.makeText(RecyclerVerticalActivity.this, name, Toast.LENGTH_SHORT).show();
+    public void onItemClick(Pessoa pessoa) {
+        Toast.makeText(RecyclerVerticalActivity.this, pessoa.getName() + " " + pessoa.getLastName(), Toast.LENGTH_SHORT).show();
     }
 
-    private List<String> criarNomes() {
-        List<String> nomes = new ArrayList<String>();
+    private List<Pessoa> criarPessoas() {
+        List<Pessoa> pessoas = new ArrayList<>();
 
         for (int i = 1; i <= 50; i++) {
             String nome = "Nome " + i;
-            nomes.add(nome);
+            String sobrenome = "Sobrenome " + i;
+            pessoas.add(new Pessoa(nome, sobrenome));
         }
 
-        return nomes;
+        return pessoas;
     }
 }
