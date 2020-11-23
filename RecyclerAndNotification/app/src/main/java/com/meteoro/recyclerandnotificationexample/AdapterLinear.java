@@ -6,16 +6,19 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class AdapterLinear extends RecyclerView.Adapter<AdapterLinear.ItemViewHolder> {
+public class AdapterLinear extends RecyclerView.Adapter<ItemViewHolder> {
 
     private List<String> dataSet;
+    private ItemClickListener listener;
 
-    AdapterLinear(List<String> data) {
+    AdapterLinear(List<String> data, ItemClickListener dataListener) {
         dataSet = data;
+        listener = dataListener;
     }
 
     @NonNull
@@ -29,25 +32,11 @@ public class AdapterLinear extends RecyclerView.Adapter<AdapterLinear.ItemViewHo
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
         String name = dataSet.get(position);
-        holder.setName(name);
+        holder.bind(name, listener);
     }
 
     @Override
     public int getItemCount() {
         return dataSet.size();
-    }
-
-    public class ItemViewHolder extends RecyclerView.ViewHolder {
-
-        private TextView itemName;
-
-        ItemViewHolder(View itemView) {
-            super(itemView);
-            itemName = itemView.findViewById(R.id.item_name);
-        }
-
-        public void setName(String name) {
-            itemName.setText(name);
-        }
     }
 }

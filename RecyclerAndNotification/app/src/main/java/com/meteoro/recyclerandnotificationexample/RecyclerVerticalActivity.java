@@ -1,6 +1,8 @@
 package com.meteoro.recyclerandnotificationexample;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerVerticalActivity extends AppCompatActivity {
+public class RecyclerVerticalActivity extends AppCompatActivity implements ItemClickListener {
 
     private RecyclerView recyclerVertical;
     private RecyclerView.LayoutManager layoutManager;
@@ -26,8 +28,13 @@ public class RecyclerVerticalActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(RecyclerVerticalActivity.this, LinearLayoutManager.VERTICAL, false);
         recyclerVertical.setLayoutManager(layoutManager);
 
-        adapter = new AdapterLinear(criarNomes());
+        adapter = new AdapterLinear(criarNomes(), RecyclerVerticalActivity.this);
         recyclerVertical.setAdapter(adapter);
+    }
+
+    @Override
+    public void onItemClick(String name) {
+        Toast.makeText(RecyclerVerticalActivity.this, name, Toast.LENGTH_SHORT).show();
     }
 
     private List<String> criarNomes() {
