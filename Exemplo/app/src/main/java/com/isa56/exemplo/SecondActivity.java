@@ -1,6 +1,9 @@
 package com.isa56.exemplo;
 
+import android.app.Notification;
 import android.os.Bundle;
+import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SecondActivity extends AppCompatActivity {
+public class SecondActivity extends AppCompatActivity implements ItemClickListener {
 
     private RecyclerView recycler;
     private RecyclerView.LayoutManager layoutManager;
@@ -24,19 +27,27 @@ public class SecondActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(SecondActivity.this, LinearLayoutManager.VERTICAL, false);
         recycler.setLayoutManager(layoutManager);
 
-        adapter = new AdapterLinear(nomesPraRecycler());
+        adapter = new AdapterLinear(criarPessoas(), this);
         recycler.setAdapter(adapter);
     }
 
-    private List<String> nomesPraRecycler(){
-        List<String> nomes = new ArrayList<String>();
 
-        for (int i = 0; i <= 50; i++){
+    private List<Pessoa> criarPessoas() {
+        List<Pessoa> pessoas = new ArrayList<Pessoa>();
+
+        for (int i = 0; i <= 50; i++) {
             String nome = "Nome " + i;
-            nomes.add(nome);
+            String sobrenome = "Sobrenome " + i;
+            pessoas.add(new Pessoa(nome, sobrenome));
         }
+        return pessoas;
+    }
 
-        return nomes;
+    @Override
+    public void onItemClick(Pessoa p) {
+        String title = p.getNome();
+        String content = p.getSobrenome() + " é um sobrenome";
+        NotificationUtils.notificationSimple(SecondActivity.this, title, content);
 
     }
 }

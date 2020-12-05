@@ -12,7 +12,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-public class NotificationUtils {
+public class    NotificationUtils {
 
     private static String CHANNEL_ID = "default";
 

@@ -1,4 +1,6 @@
 package com.isa56.exemplo;
 
-public class ItemClickListener {
+public interface ItemClickListener {
+
+    void onItemClick(Pessoa p);
 }
