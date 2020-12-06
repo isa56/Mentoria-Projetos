@@ -1,4 +1,4 @@
-package com.isa56.aprendendoapis
+package com.isa56.aprendendoapis.classes
 
 class Dog (
     var message: String,
